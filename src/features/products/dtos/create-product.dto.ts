@@ -16,7 +16,7 @@ export class CreateProductDto {
         message: "Description must be a string."
     })
     @Length(25, 255, {
-        message: "Description must be between 25 and 255 characters"
+        message: "Description must be between 25 and 255 characters."
     })
     description: string;
 

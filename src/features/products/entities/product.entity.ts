@@ -1,4 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Order } from "src/features/orders/entities/order.entity";
+import { Column, Entity, PrimaryGeneratedColumn,
+    OneToMany
+} from "typeorm";
 
 @Entity("products")
 export class Product {
@@ -32,4 +35,7 @@ export class Product {
         default: () => "CURRENT_TIMESTAMP"
     })
     createdAt: Date;
+
+    @OneToMany(() => Order, order => order.product)
+    orders: Order[];
 }

@@ -24,7 +24,7 @@ export class ProductSpecs implements
     }
 
     deafultMessage() {
-        return `product specs must be a valid object with 
-            supported specs`;
+        return `Product specs must be a valid object with 
+            supported specs.`;
     }
 }

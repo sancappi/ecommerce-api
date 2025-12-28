@@ -6,11 +6,11 @@ import { ReviewsModule } from './features/reviews/reviews.module';
 import { UsersModule } from './features/users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-
+import { CommonModule } from './common/common.module';
 
 @Module({
   imports: [OrdersModule, PaymentsModule, ProductsModule,
-    ReviewsModule, UsersModule, 
+    ReviewsModule, UsersModule, CommonModule,
     
     ConfigModule.forRoot({
       isGlobal: true
@@ -20,10 +20,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       useFactory: (configService: ConfigService) => ({
         type: "postgres",
         host: configService.get<string>('HOST_NAME'),
-        port: configService.get<number>("PORT"),
-        username: configService.get<string>('USERNAME'),
-        password: configService.get<string>('PASSWORD'),
-        database: configService.get<string>('DATABASE'),
+        port: configService.get<number>("DB_PORT"),
+        username: configService.get<string>('DB_USERNAME'),
+        password: configService.get<string>('DB_PASSWORD'),
+        database: configService.get<string>('DB_NAME'),
         entities: ["/**/*.entity{.ts, .js}"],
         synchronize: true,
       }),

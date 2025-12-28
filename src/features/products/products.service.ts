@@ -16,8 +16,24 @@ export class ProductsService {
         await this.productRepository.save(product);
 
         return {
-            message: "Product created successfully",
+            message: "Product created successfully.",
             product
         };
+    }
+
+    async getProducts(page = 1, limit = 10) {
+        const products = await this.productRepository.find({
+            skip: (page - 1) * limit,
+            take: limit
+        });
+
+        return {products};
+    }
+
+    async getProductById(id: string) {
+        const product = await this.productRepository.findOne({
+            where: {id}
+        });
+        return {product};
     }
 }
