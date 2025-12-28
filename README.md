@@ -15,7 +15,7 @@ O projeto simula operações comuns de um e-commerce, como gestão de produtos, 
 - Camada de serviços desacoplada
 - Preparado para integração com gateways de pagamento
 
-## 🚀 Tecnologias utilizadas
+## ✅ Tecnologias utilizadas
 
 - NestJS
 - TypeScript
