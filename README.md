@@ -8,31 +8,27 @@ O projeto simula operações comuns de um e-commerce, como gestão de produtos, 
 
 - Em desenvolvimento
 
-## 🧱 Arquitetura
+## 🧱 Características
 
 - Arquitetura modular
 - Separação de responsabilidades
 - Camada de serviços desacoplada
 - Preparado para integração com gateways de pagamento
 
+<<<<<<< HEAD
 ## ✅ Tecnologias utilizadas
+=======
+## ⚙️ Tecnologias utilizadas
+>>>>>>> 32dfc3a (atualiza o readme)
 
 - NestJS
 - TypeScript
-- Insomnia (testes de API)
+- PostgreSQL
 
-## ⚙️ Funcionalidades
+## ✅ Funcionalidades
 
 - Cadastro e listagem de produtos
 - Criação de pedidos
 - Fluxo de pagamento
 - Webhooks para atualização de status
 - Validações e tratamento de erros
-
-## ▶️ Como rodar o projeto
-
-### Ambiente de desenvolvimento
-
-```bash
-npm install
-npm run start:dev
