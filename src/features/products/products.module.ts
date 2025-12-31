@@ -4,11 +4,11 @@ import { ProductsController } from "./products.controller";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { Product } from "./entities/product.entity";
 import { PaginationService } from "src/common/pagination/pagination.service";
-import { CommonModule } from "src/common/common.module";
+import { PaginationModule } from "src/common/pagination/pagination.module";
 
 @Module({
     imports: [TypeOrmModule.forFeature([Product]), 
-        CommonModule],
+        PaginationModule],
     controllers: [ProductsController],
     providers: [ProductsService, PaginationService],
 })

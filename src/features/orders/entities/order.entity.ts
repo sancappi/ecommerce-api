@@ -1,4 +1,5 @@
 import { Product } from "src/features/products/entities/product.entity";
+import { User } from "src/features/users/entities/user.entity";
 import { Column, Entity, ManyToOne, 
     PrimaryGeneratedColumn } from "typeorm";
 
@@ -42,4 +43,7 @@ export class Order {
     @ManyToOne(() => Product, product => 
         product.orders)
     product: Product;
+
+    @ManyToOne(() => User, user => user.orders)
+    customer: User;
 }

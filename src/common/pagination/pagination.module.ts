@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common";
-import { PaginationService } from "./pagination/pagination.service";
+import { PaginationService } from "./pagination.service";
 
 @Module({
     imports: [],
@@ -7,4 +7,4 @@ import { PaginationService } from "./pagination/pagination.service";
     providers: [PaginationService],
     exports: [PaginationService]
 })
-export class CommonModule {}
+export class PaginationModule {}
