@@ -4,6 +4,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { Order } from "./entities/order.entity";
 import { Product } from "../products/entities/product.entity";
+import { PaginationService } from "src/common/pagination/pagination.service";
 
 @Injectable()
 export class OrdersService {
@@ -13,7 +14,9 @@ export class OrdersService {
             private orderRepository: Repository<Order>,
             
             @InjectRepository(Product)
-            private productRepository: Repository<Product>
+            private productRepository: Repository<Product>,
+
+            private readonly paginationService: PaginationService
         ) {}
 
     async createOrder(createOrderDto: CreateOrderDto) {
@@ -67,7 +70,16 @@ export class OrdersService {
             }
         });
 
-        return {orders};
+        const totalItems = await this.orderRepository.count();
+        
+        const meta = this.paginationService.getPaginationMeta(
+            page, limit, totalItems
+        );
+
+        return {
+            orders,
+            meta
+        };
     }
 
     async getOrderById(id: string) {

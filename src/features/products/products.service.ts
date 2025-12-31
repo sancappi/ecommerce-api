@@ -3,12 +3,15 @@ import { CreateProductDto } from "./dtos/create-product.dto";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Product } from "./entities/product.entity";
 import { Repository } from "typeorm";
+import { PaginationService } from "src/common/pagination/pagination.service";
 
 @Injectable()
 export class ProductsService {
     constructor (
         @InjectRepository(Product)
-        private readonly productRepository: Repository<Product>
+        private readonly productRepository: Repository<Product>,
+        
+        private readonly paginationService: PaginationService
     ) {}
 
     async createProduct(createProductDto: CreateProductDto) {
@@ -27,7 +30,17 @@ export class ProductsService {
             take: limit
         });
 
-        return {products};
+        const totalItems = await this.productRepository.count();
+        const meta = this.paginationService.getPaginationMeta(
+            page,
+            limit,
+            totalItems
+        )
+
+        return {
+            products,
+            meta
+        };
     }
 
     async getProductById(id: string) {
